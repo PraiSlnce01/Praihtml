@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PRAISLENCE</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    header h1 {
+      font-family: 'Orbitron', sans-serif;
+    }
+    #logo-screen {
+      animation: fadeSlideDown 1.2s ease-out forwards;
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    @keyframes fadeSlideDown {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+  <!-- Logo Splash Screen -->
+  <div id="logo-screen" class="fixed inset-0 bg-gray-900 z-50 flex flex-col items-center justify-center">
+   <h1 class="text-3xl font-bold text-teal-400">Selamat Datang Di Website PraiOfficial</h1>
+  </div>
+
+  <div id="main-content" class="hidden">
+    <!-- Welcome Animation -->
+    <div id="welcome-message" class="text-center py-6 text-3xl font-bold text-teal-400">
+      Selamat Datang Di Website PraiOfficial
+    </div>
+
+    <audio id="welcome-audio">
+      <source src="https://www.myinstants.com/media/sounds/mixkit-fairy-bells-583.mp3" type="audio/mpeg">
+    </audio>
+
+    <header class="bg-gray-800 shadow p-6">
+      <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <h1 class="text-4xl font-bold text-teal-400 tracking-widest">PraiOfficial</h1>
+        <a href="https://wa.me/6283191417828" class="bg-teal-500 text-white px-4 py-2 rounded-lg hover:bg-teal-600 transition">Hubungi Kami</a>
+      </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+      <h2 class="text-3xl font-semibold mb-8 text-center text-teal-300">Produk & Service</h2>
+      <div id="produk-list" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"></div>
+    </main>
+
+    <!-- QRIS Modal -->
+    <div id="qris-modal" class="hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-60 z-50">
+      <div class="bg-white text-black p-6 rounded-lg shadow-lg max-w-sm w-full text-center">
+        <h2 class="text-xl font-bold mb-2">Pembayaran via QRIS</h2>
+        <p class="text-sm text-gray-600 mb-4">Scan QR untuk bayar via DANA / GoPay</p>
+        <img src="https://i.ibb.co/1bRL8bw/qris-example.jpg" alt="QRIS" class="mx-auto mb-4 rounded shadow">
+        <button onclick="document.getElementById('qris-modal').classList.add('hidden')" class="mt-2 px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600">Tutup</button>
+      </div>
+    </div>
+
+    <footer class="bg-gray-800 text-center py-6 shadow-inner mt-10">
+      <p class="text-gray-400">&copy; 2025 PRAISLENCE. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <!-- Script Logo & Produk -->
+  <script>
+    const produk = [
+      { nama: "Jasa Fix Pairing Code" },
+      { nama: "Jasa Fix Script Bot Wa" },
+      { nama: "Jasa Ubah Tema Script" },
+      { nama: "Jasa Ubah Code Pairing Jadi Nama Code Sendiri" },
+      { nama: "Jasa Pw/Key Di Panel Sc Kalian" },
+      { nama: "Jasa Rename Script Bot Wa" },
+      { nama: "Jasa Bikin Script Bot Wa" },
+      { nama: "Panel Pterodactyl" },
+      { nama: "Reseller Panel" },
+      { nama: "Admin Panel" },
+      { nama: "PT Panel" },
+      { nama: "Own Panel" },
+      { nama: "Script Bot Pushkontak VIP" },
+      { nama: "Script Bot MD 1000 Fitur" },
+      { nama: "Script Bot Jaga Grup + Pushkontak + Jpm" },
+      { nama: "Script Bot" },
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        document.getElementById('logo-screen').classList.add('hidden');
+        document.getElementById('main-content').classList.remove('hidden');
+        document.getElementById('welcome-audio').play();
+      }, 2500);
+
+      const container = document.getElementById('produk-list');
+      produk.forEach((item) => {
+        const div = document.createElement('div');
+        div.className = "bg-gray-800 border border-teal-500 rounded-xl shadow-lg p-6 hover:scale-105 transition-transform duration-300";
+        div.innerHTML = `
+          <h3 class="text-xl font-semibold text-teal-400">${item.nama}</h3>
+          <p class="text-gray-300 mb-4">${item.harga ?? 'Hubungi Kami'}</p>
+          <a href="https://wa.me/6283191417828?text=Halo%20saya%20mau%20beli%20${encodeURIComponent(item.nama)}" class="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 transition text-center block">Pesan via WA</a>
+        `;
+        container.appendChild(div);
+      });
+    });
+  </script>
+</body>
+</html>
